@@ -1,0 +1,10 @@
+[
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:blocktypes/soil/forestfloor.json",
+    "path": "/behaviors",
+    "value": [ { "name": "FiddleheadHost" } ]
+  }
+]

@@ -1,0 +1,106 @@
+[
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:recipes/cooking/meatystew.json",
+    "path": "/ingredients/5/validStacks",
+    "value": [{ "type": "item", "code": "vegetable-fiddlehead",  "shapeElement": "bowl/vegetable 1/*" }]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:recipes/cooking/meatystew.json",
+    "path": "/ingredients/6/validStacks",
+    "value": [{ "type": "item", "code": "vegetable-fiddlehead",  "shapeElement": "bowl/vegetable 2/*" }]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:recipes/cooking/vegetablestew.json",
+    "path": "/ingredients/0/validStacks",
+    "value": [{ "type": "item", "code": "vegetable-fiddlehead",  "shapeElement": "bowl/vegetable 1/*" }]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:recipes/cooking/vegetablestew.json",
+    "path": "/ingredients/0/validStacks",
+    "value": [{ "type": "item", "code": "vegetable-fiddlehead",  "shapeElement": "bowl/vegetable 2/*" }]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:recipes/cooking/vegetablestew.json",
+    "path": "/ingredients/0/validStacks",
+    "value": [{ "type": "item", "code": "vegetable-fiddlehead",  "shapeElement": "bowl/vegetable 3/*" }]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:recipes/cooking/vegetablestew.json",
+    "path": "/ingredients/0/validStacks",
+    "value": [{ "type": "item", "code": "vegetable-fiddlehead",  "shapeElement": "bowl/vegetable 4/*" }]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:recipes/cooking/porridge.json",
+    "path": "/ingredients/3/validStacks",
+    "value": [{ "type": "item", "code": "vegetable-fiddlehead",  "shapeElement": "bowl/vegetable 1/*" }]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:recipes/cooking/porridge.json",
+    "path": "/ingredients/4/validStacks",
+    "value": [{ "type": "item", "code": "vegetable-fiddlehead",  "shapeElement": "bowl/vegetable 2/*" }]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:recipes/cooking/soup.json",
+    "path": "/ingredients/1/validStacks",
+    "value": [{ "type": "item", "code": "vegetable-fiddlehead",  "shapeElement": "bowl/vegetable base 1/*" }]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:recipes/cooking/soup.json",
+    "path": "/ingredients/2/validStacks",
+    "value": [{ "type": "item", "code": "vegetable-fiddlehead",  "shapeElement": "bowl/vegetable base 2/*" }]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:recipes/cooking/soup.json",
+    "path": "/ingredients/3/validStacks",
+    "value": [{ "type": "item", "code": "vegetable-fiddlehead",  "shapeElement": "bowl/vegetable base 3/*" }]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:recipes/cooking/scrambledeggs.json",
+    "path": "/ingredients/5/validStacks",
+    "value": [{ "type": "item", "code": "vegetable-fiddlehead",  "shapeElement": "bowl/vegetable2/*" }]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:recipes/cooking/scrambledeggs.json",
+    "path": "/ingredients/6/validStacks",
+    "value": [{ "type": "item", "code": "vegetable-fiddlehead",  "shapeElement": "bowl/vegetable3/*" }]
+  }
+]

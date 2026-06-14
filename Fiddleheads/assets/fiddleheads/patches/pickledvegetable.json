@@ -1,0 +1,79 @@
+[
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:itemtypes/food/pickledvegetable.json",
+    "path": "/variantgroups/0/states",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:itemtypes/food/pickledvegetable.json",
+    "path": "/nutritionPropsByType",
+    "value": { "*-fiddlehead": { "satiety": 45, "foodcategory": "Vegetable" } }
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "move",
+    "file": "game:itemtypes/food/pickledvegetable.json",
+    "frompath": "/nutritionPropsByType/*",
+    "path": "/temp"
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "move",
+    "file": "game:itemtypes/food/pickledvegetable.json",
+    "frompath": "/temp",
+    "path": "/nutritionPropsByType/*"
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:itemtypes/food/pickledvegetable.json",
+    "path": "/guiTransformByType",
+    "value": {
+      "*-fiddlehead": {
+			  "translation": { "x": 2, "y": 1, "z": 0 },
+			  "rotation": { "x": 180, "y": 44, "z": 56 },
+			  "origin": { "x": 0.5, "y": 0.2, "z": 0.5 },
+			  "scale": 4.75
+      }
+    }
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:itemtypes/food/pickledvegetable.json",
+    "path": "/tpHandTransformByType",
+    "value": {
+      "*-fiddlehead": {
+			  "translation": { "x": -0.57, "y": -0.14, "z": -0.56 },
+			  "rotation": { "x": 0, "y": 0, "z": -89 },
+			  "origin": { "x": 0.5, "y": 0.1, "z": 0.5 },
+			  "scale": 0.88
+      }
+    }
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:itemtypes/food/pickledvegetable.json",
+    "path": "/groundTransformByType",
+    "value": {
+      "*-fiddlehead": {
+			  "translation": { "x": 0, "y": 0, "z": 0 },
+			  "rotation": { "x": 0, "y": 0, "z": 83 },
+			  "origin": { "x": 0.47, "y": 0, "z": 0.5 },
+			  "scale": 4.3
+      }
+    }
+  }
+]

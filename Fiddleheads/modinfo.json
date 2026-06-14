@@ -1,0 +1,13 @@
+{
+  "type": "code",
+  "modid": "fiddleheads",
+  "name": "Fiddleheads",
+  "authors": [
+    "xXx_Ape_xXx"
+  ],
+  "description": "Forragable Fiddleheads",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": "1.22.0"
+  }
+}

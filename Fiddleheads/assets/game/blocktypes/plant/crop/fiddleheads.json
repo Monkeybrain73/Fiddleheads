@@ -1,0 +1,170 @@
+{
+  "code": "crop",
+  "class": "BlockFiddlehead",
+  "behaviors": [ { "name": "Unstable" } ],
+  "variantgroups": [
+    {
+      "code": "type",
+      "states": [ "fiddlehead" ]
+    },
+    {
+      "code": "stage",
+      "states": [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
+    }
+  ],
+  "creativeinventory": {
+    "general": [ "" ],
+    "plants": [ "" ]
+  },
+  "renderpass": "OpaqueNoCull",
+  "randomDrawOffset": true,
+  "randomizeRotations": true,
+  "randomizeAxes": "xz",
+  "randomSizeAdjust": 0.1,
+  "shape": { "base": "block/plant/crop/fiddlehead/stage{stage}" },
+  "blockmaterial": "Plant",
+  "attributes": {
+    "tickGrowthProbability": 0.55,
+    "fiddleheadProps": {
+      "dieWhenTempBelow": 0,
+      "dieAfterFruiting": false
+    },
+    "wildFiddleheadProps": {
+      "GrowRange": 7,
+      "MinCount": 2,
+      "MaxCount": 12,
+      "FruitingDaysMin": 10,
+      "FruitingDaysMax": 20,
+      "GrowingDaysMin": 20,
+      "GrowingDaysMax": 30,
+      "WildGrowthTempMin": 2,
+      "WildGrowthTempMax": 10,
+      "WildFernDropMul": 0.85
+    },
+    "butterflyFeed": false,
+    "handbook": {
+      "include": true
+    }
+  },
+  "cropProps": {
+    "requiredNutrient": "N",
+    "nutrientConsumption": 10,
+    "growthStages": 9,
+    "totalGrowthMonths": 0.95,
+    "heatDamageAbove": 35
+  },
+  "rainPermeable": false,
+  "dropsByType": {
+    "*-2": [
+      {
+        "type": "item",
+        "code": "seeds-fiddlehead",
+        "quantity": { "avg": 0.99 }
+      },
+      {
+        "type": "item",
+        "code": "vegetable-fiddlehead",
+        "quantity": {
+          "avg": 1.85,
+          "var": 0.15
+        }
+      }
+    ],
+    "*-3": [
+      {
+        "type": "item",
+        "code": "seeds-fiddlehead",
+        "quantity": { "avg": 1.2 }
+      },
+      {
+        "type": "item",
+        "code": "vegetable-fiddlehead",
+        "quantity": {
+          "avg": 3,
+          "var": 1
+        }
+      }
+    ],
+    "*-4": [
+      {
+        "type": "item",
+        "code": "seeds-fiddlehead",
+        "quantity": { "avg": 1.2 }
+      },
+      {
+        "type": "item",
+        "code": "vegetable-fiddlehead",
+        "quantity": {
+          "avg": 8,
+          "var": 2
+        }
+      },
+      {
+        "type": "block",
+        "code": "fiddleheadfern",
+        "quantity": { "avg": 1 }
+      }
+    ],
+    "*-5": [
+      {
+        "type": "item",
+        "code": "seeds-fiddlehead",
+        "quantity": { "avg": 1.0 }
+      },
+      {
+        "type": "item",
+        "code": "vegetable-fiddlehead",
+        "quantity": {
+          "avg": 5,
+          "var": 2
+        }
+      },
+      {
+        "type": "block",
+        "code": "fiddleheadfern",
+        "quantity": { "avg": 1 }
+      }
+    ],
+    "*": [
+      {
+        "type": "item",
+        "code": "seeds-fiddlehead",
+        "quantity": { "avg": 0.6 }
+      },
+      {
+        "type": "block",
+        "code": "fiddleheadfern",
+        "quantity": { "avg": 1 }
+      }
+    ]
+  },
+  "collisionbox": null,
+  "selectionBox": {
+    "x1": 0.1875,
+    "y1": 0,
+    "z1": 0.1875,
+    "x2": 0.8125,
+    "y2": 0.25,
+    "z2": 0.8125
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "sidesolid": {
+    "all": false
+  },
+  "lightAbsorption": 0,
+  "sounds": {
+    "place": "block/plant",
+    "break": "block/plant",
+    "hit": "block/plant"
+  },
+  "replaceable": 3000,
+  "materialDensity": 200,
+  "resistance": 0.5,
+  "combustibleProps": {
+    "burnTemperature": 600,
+    "burnDuration": 10
+  },
+  "frostable": true
+}

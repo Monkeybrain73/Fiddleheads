@@ -1,0 +1,168 @@
+[
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:itemtypes/food/vegetable.json",
+    "path": "/nutritionPropsByType",
+    "value": {
+      "*-fiddlehead": {
+        "satiety": 0,
+        "health": -1,
+        "foodcategory": "vegetable"
+      }
+    }
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "move",
+    "file": "game:itemtypes/food/vegetable.json",
+    "frompath": "/nutritionPropsByType/*",
+    "path": "/temp"
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "move",
+    "file": "game:itemtypes/food/vegetable.json",
+    "frompath": "/temp",
+    "path": "/nutritionPropsByType/*"
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:itemtypes/food/vegetable.json",
+    "path": "/variantgroups/0/states",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:itemtypes/food/vegetable.json",
+    "path": "/attributesByType",
+    "value": {
+      "*-fiddlehead": {
+        "foodTags": [ "{type}", "tastyvegetable" ],
+        "inContainerTexture": { "base": "block/wood/barrel/pickled-cabbage" },
+        "nutritionPropsWhenInMeal": {
+          "satiety": 60,
+          "foodcategory": "vegetable"
+        },
+        "inPieProperties": {
+          "texture": "block/food/pie/fill-{type}",
+          "partType": "Filling",
+          "mixingCodes": [ "potpie" ]
+        },
+        "displayable": {
+          "shelf": {
+            "size": {
+              "width": 4,
+              "height": 4,
+              "length": 4
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "move",
+    "file": "game:itemtypes/food/vegetable.json",
+    "frompath": "/attributesByType/*",
+    "path": "/temp"
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "move",
+    "file": "game:itemtypes/food/vegetable.json",
+    "frompath": "/temp",
+    "path": "/attributesByType/*"
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:itemtypes/food/vegetable.json",
+    "path": "/guiTransformByType",
+    "value": {
+      "*-fiddlehead": {
+        "translation": {
+          "x": 2,
+          "y": 1,
+          "z": 0
+        },
+        "rotation": {
+          "x": 180,
+          "y": 44,
+          "z": 56
+        },
+        "origin": {
+          "x": 0.5,
+          "y": 0.26,
+          "z": 0.5
+        },
+        "scale": 4.4
+      }
+    }
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:itemtypes/food/vegetable.json",
+    "path": "/tpHandTransformByType",
+    "value": {
+      "*-fiddlehead": {
+        "translation": {
+          "x": -0.57,
+          "y": -0.14,
+          "z": -0.56
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": -89
+        },
+        "origin": {
+          "x": 0.5,
+          "y": 0.1,
+          "z": 0.5
+        },
+        "scale": 0.88
+      }
+    }
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:itemtypes/food/vegetable.json",
+    "path": "/groundTransformByType",
+    "value": {
+      "*-fiddlehead": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 83
+        },
+        "origin": {
+          "x": 0.45,
+          "y": 0.25,
+          "z": 0.49
+        },
+        "scale": 4.3
+      }
+    }
+  }
+]

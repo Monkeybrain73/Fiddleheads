@@ -1,0 +1,75 @@
+[
+  {
+    // Common Large patches of fiddlheads in warm and wet forests
+    "blockCodes": [ "crop-fiddlehead-1", "crop-fiddlehead-2", "crop-fiddlehead-3", "crop-fiddlehead-5" ],
+    "minTemp": 25,
+    "minForest": 0.5,
+    "minRain": 0.7,
+    "minFertility": 0.25,
+    "quantity": {
+      "avg": 25,
+      "var": 20
+    },
+    "chance": 3,
+    "placement": "OnSurfacePlusUnderTrees"
+  },
+  {
+    // Common Small patches of fiddleheads in cold forested areas
+    "blockCodes": [ "crop-fiddlehead-1", "crop-fiddlehead-2", "crop-fiddlehead-3", "crop-fiddlehead-5" ],
+    "minTemp": -12,
+    "maxTemp": 10,
+    "minForest": 0.5,
+    "minRain": 0.4,
+    "minFertility": 0.25,
+    "quantity": {
+      "avg": 5,
+      "var": 3
+    },
+    "chance": 3,
+    "placement": "OnSurfacePlusUnderTrees"
+  },
+  {
+    // Common Small patches of fiddleheads in wet forested areas
+    "blockCodes": [ "crop-fiddlehead-2", "crop-fiddlehead-3", "crop-fiddlehead-1", "crop-fiddlehead-5" ],
+    "minTemp": -3,
+    "maxTemp": 15,
+    "minForest": 0.5,
+    "minRain": 0.75,
+    "minFertility": 0.25,
+    "quantity": {
+      "avg": 5,
+      "var": 3
+    },
+    "chance": 3,
+    "placement": "OnSurfacePlusUnderTrees"
+  },
+  {
+    // Common Small patches of fiddleheads in wet forested areas
+    "blockCodes": [ "crop-fiddlehead-2", "crop-fiddlehead-3", "crop-fiddlehead-1", "crop-fiddlehead-5" ],
+    "minTemp": 2,
+    "maxTemp": 20,
+    "minForest": 0.5,
+    "minRain": 0.75,
+    "minFertility": 0.25,
+    "quantity": {
+      "avg": 5,
+      "var": 3
+    },
+    "chance": 3,
+    "placement": "OnSurfacePlusUnderTrees"
+  },
+  {
+    // Common Small patches of fiddleheads in warm and wet forests
+    "blockCodes": [ "crop-fiddlehead-2", "crop-fiddlehead-3", "crop-fiddlehead-1", "crop-fiddlehead-5" ],
+    "minTemp": 22,
+    "minForest": 0.5,
+    "minRain": 0.7,
+    "minFertility": 0.25,
+    "quantity": {
+      "avg": 5,
+      "var": 3
+    },
+    "chance": 4,
+    "placement": "OnSurfacePlusUnderTrees"
+  }
+]

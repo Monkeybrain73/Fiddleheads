@@ -1,0 +1,10 @@
+[
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:blocktypes/clay/fired/pot.json",
+    "path": "/attributesByType/claypot-blue-cooked/textureMapping",
+    "value": { "vegetable-fiddlehead": ["vegetable","group28"], "pickledvegetable-fiddlehead": ["vegetable","group28"] }
+  }
+]
