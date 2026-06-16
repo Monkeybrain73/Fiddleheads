@@ -17,31 +17,32 @@
     "plants": [ "" ]
   },
   "renderpass": "OpaqueNoCull",
-  "randomDrawOffset": true,
+  "randomDrawOffset": false,
   "randomizeRotations": true,
   "randomizeAxes": "xz",
   "randomSizeAdjust": 0.1,
   "shape": { "base": "block/plant/crop/fiddlehead/stage{stage}" },
   "blockmaterial": "Plant",
   "attributes": {
-    "tickGrowthProbability": 0.55,
+    "tickGrowthProbability": 0.15,
     "fiddleheadProps": {
-      "dieWhenTempBelow": 0,
-      "dieAfterFruiting": false
+      "dieWhenTempBelow": -12,
+      "dieAfterFruiting": true
     },
     "wildFiddleheadProps": {
       "GrowRange": 7,
       "MinCount": 2,
       "MaxCount": 12,
-      "FruitingDaysMin": 10,
-      "FruitingDaysMax": 20,
-      "GrowingDaysMin": 20,
-      "GrowingDaysMax": 30,
-      "WildGrowthTempMin": 2,
-      "WildGrowthTempMax": 10,
+      "GrowingMonthsMin": 0.4,
+      "GrowingMonthsMax": 0.8,
+      "FruitingMonthsMin": 3,
+      "FruitingMonthsMax": 5,
+      "WildGrowthStartTemp": 2,
+      "WildGrowthOptimalTemp": 10,
       "WildFernDropMul": 0.85
     },
     "butterflyFeed": false,
+    "foodTags": [ "fiddlehead" ],
     "handbook": {
       "include": true
     }
@@ -58,83 +59,88 @@
     "*-2": [
       {
         "type": "item",
-        "code": "seeds-fiddlehead",
+        "code": "game:seeds-fiddlehead",
         "quantity": { "avg": 0.99 }
       },
       {
         "type": "item",
-        "code": "vegetable-fiddlehead",
+        "code": "game:vegetable-fiddlehead",
         "quantity": {
           "avg": 1.85,
           "var": 0.15
-        }
+        },
+        "tool": "knife"
       }
     ],
     "*-3": [
       {
         "type": "item",
-        "code": "seeds-fiddlehead",
+        "code": "game:seeds-fiddlehead",
         "quantity": { "avg": 1.2 }
       },
       {
         "type": "item",
-        "code": "vegetable-fiddlehead",
+        "code": "game:vegetable-fiddlehead",
         "quantity": {
           "avg": 3,
           "var": 1
-        }
+        },
+        "tool": "knife"
       }
     ],
     "*-4": [
       {
         "type": "item",
-        "code": "seeds-fiddlehead",
+        "code": "game:seeds-fiddlehead",
         "quantity": { "avg": 1.2 }
       },
       {
         "type": "item",
-        "code": "vegetable-fiddlehead",
+        "code": "game:vegetable-fiddlehead",
         "quantity": {
           "avg": 8,
           "var": 2
-        }
+        },
+        "tool": "knife"
       },
       {
         "type": "block",
-        "code": "fiddleheadfern",
+        "code": "game:fiddleheadfern",
         "quantity": { "avg": 1 }
       }
     ],
     "*-5": [
       {
         "type": "item",
-        "code": "seeds-fiddlehead",
+        "code": "game:seeds-fiddlehead",
         "quantity": { "avg": 1.0 }
       },
       {
         "type": "item",
-        "code": "vegetable-fiddlehead",
+        "code": "game:vegetable-fiddlehead",
         "quantity": {
           "avg": 5,
           "var": 2
-        }
+        },
+        "tool": "knife"
       },
       {
         "type": "block",
-        "code": "fiddleheadfern",
+        "code": "game:fiddleheadfern",
         "quantity": { "avg": 1 }
       }
     ],
     "*": [
       {
         "type": "item",
-        "code": "seeds-fiddlehead",
+        "code": "game:seeds-fiddlehead",
         "quantity": { "avg": 0.6 }
       },
       {
         "type": "block",
-        "code": "fiddleheadfern",
-        "quantity": { "avg": 1 }
+        "code": "game:fiddleheadfern",
+        "quantity": { "avg": 1 },
+        "tool": "knife"
       }
     ]
   },

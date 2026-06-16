@@ -1,0 +1,18 @@
+[
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:blocktypes/reed/baskettrap.json",
+    "path": "/attributes/excludeFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:blocktypes/wood/trapcrate.json",
+    "path": "/attributes/excludeFoodTags",
+    "value": [ "fiddlehead" ]
+  }
+]

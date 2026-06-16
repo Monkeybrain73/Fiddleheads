@@ -1,0 +1,146 @@
+[
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/deer-adult.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/deer-baby.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/elk-tamed.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/gazelle-adult.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/gazelle-baby.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/deer-baby.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/goat-adult.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/goat-baby.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/moose-adult.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/moose-baby.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/deer-baby.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/pig-adult.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/pig-baby.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/sheep-adult.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hooved/sheep-baby.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hare-adult.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/hare-baby.json",
+    "path": "/attributes/creatureDiet/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  },
+  {
+    "enabled": true,
+    "side": "server",
+    "op": "addmerge",
+    "file": "game:entities/animal/mammal/bear-adult.json",
+    "path": "/attributes/creatureDietByType/bear-panda-*/skipFoodTags",
+    "value": [ "fiddlehead" ]
+  }
+]

@@ -17,33 +17,10 @@ namespace Fiddleheads
 {
     public class BlockFiddlehead : BlockCrop
     {
-        /*
-        protected static readonly float defaultGrowthProbability = 0.8f;
-        protected float tickGrowthProbability;
-        protected float onFarmlandVerticalOffset = -0.0625f;
-
-        protected MeshData onFarmLandMesh;
-        protected CompositeShape onFarmlandCshape;
-
-        /// <summary>
-        /// Applied to produce drop count when this is a wild fern
-        /// </summary>
-
-        public int CurrentCropStage
-        {
-            get
-            {
-                int.TryParse(LastCodePart(), out int stage);
-                return stage;
-            }
-        }
-        */
-
         // Fiddleheads grow faster than normal crops, so we use a higher default growth probability.
         // This is still modified by temperature and other factors in the same way as normal crops.
         private new static readonly float defaultGrowthProbability = 1.2f;
 
-        // public static float WildFernDropMul = 0.85f;
         WildFiddleheadProps wildProps;
 
         WorldInteraction[] interactions = null;
@@ -82,6 +59,22 @@ namespace Fiddleheads
                     }
                 };
             });
+
+            wildProps = Attributes?["wildFiddleheadProps"]?.AsObject<WildFiddleheadProps>();
+
+            if (wildProps == null)
+            {
+                api.Logger.Error("wildFiddleheadProps failed to load!");
+            }
+
+            /* else
+            {
+                api.Logger.Notification($"Fiddlehead loaded: wildProps={(wildProps == null ? "NULL" : "OK")}");
+            }
+            */
+
+            // Debug number of interactions loaded for this block.
+            // api.Logger.Notification($"Stage {CurrentCropStage}: interactions={interactions?.Length}");
 
         }
 
@@ -137,25 +130,27 @@ namespace Fiddleheads
         {
             extra = null;
 
-            float temperature = world.BlockAccessor.GetClimateAt(pos, EnumGetClimateMode.NowValues).Temperature;
+            // Logging growth ticks.
+            // api.Logger.Notification($"Growth tick check: {Code}  Pos={pos} Stage={CurrentStage()}");
 
-            if (temperature < wildProps.WildGrowthTempMin)
-            {
-                return false;
-            }
+
+            float temperature = world.BlockAccessor.GetClimateAt(pos, EnumGetClimateMode.NowValues).Temperature;
 
             if (!IsNotOnFarmland(world, pos))
             {
                 return false;
             }
 
-            float growthMultiplier = GameMath.Clamp(
-                (temperature - wildProps.WildGrowthTempMin) / wildProps.WildGrowthTempMax,
-                0f,
-                1f
-            );
+            float growthFactor = GetWildGrowthFactor(temperature, wildProps);
 
-            float adjustedGrowthChance = tickGrowthProbability * growthMultiplier;
+            if (growthFactor <= 0f)
+            {
+                // Logging when growth is halted due to temperature.
+                // api.Logger.Notification($"Stage {CurrentStage()} Temp={temperature:F1} GrowthFactor={growthFactor:F2}");
+                return false;
+            }
+
+            float adjustedGrowthChance = tickGrowthProbability * growthFactor;
 
             if (offThreadRandom.NextDouble() >= adjustedGrowthChance)
             {
@@ -168,6 +163,8 @@ namespace Fiddleheads
 
         public override void OnServerGameTick(IWorldAccessor world, BlockPos pos, object extra = null)
         {
+            // api.Logger.VerboseDebug("Fiddlehead growth tick at {0}, extra: {1}", pos, extra);
+
             Block block = extra as Block;
             world.BlockAccessor.ExchangeBlock(block.BlockId, pos);
         }
@@ -258,13 +255,16 @@ namespace Fiddleheads
 
         private Block GetNextGrowthStageBlock(IWorldAccessor world, BlockPos pos)
         {
-            int nextStage = CurrentStage() + 1;
-            Block block = world.GetBlock(CodeWithParts(nextStage.ToString()));
-            if (block == null)
+            int currentStage = CurrentStage();
+
+            if (currentStage >= CropProps.GrowthStages)
             {
-                nextStage = 1;
+                return this;
             }
-            return world.GetBlock(CodeWithParts(nextStage.ToString()));
+
+            return world.GetBlock(
+                CodeWithParts((currentStage + 1).ToString())
+            );
         }
 
         public override bool OnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
@@ -276,10 +276,14 @@ namespace Fiddleheads
         }
 
 
+        
         public override WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer)
         {
-            return interactions.Append(base.GetPlacedBlockInteractionHelp(world, selection, forPlayer));
+            // return base.GetPlacedBlockInteractionHelp(world, selection, forPlayer);
+
+            return interactions;
         }
+        
 
         public override bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, IRandom worldGenRand, BlockPatchAttributes attributes = null)
         {
@@ -302,12 +306,17 @@ namespace Fiddleheads
             return true;
         }
 
-        /*
-        public int CurrentStage()
+        public static float GetWildGrowthFactor(float temperature, WildFiddleheadProps props)
         {
-            int.TryParse(LastCodePart(), out int stage);
-            return stage;
+            if (props == null) return 0f;
+
+            return GameMath.Clamp(
+                (temperature - props.WildGrowthStartTemp) /
+                (props.WildGrowthOptimalTemp - props.WildGrowthStartTemp),
+                0f,
+                1f
+            );
         }
-        */
+
     }
 }

@@ -13,8 +13,8 @@ namespace Fiddleheads
     public class Core : ModSystem
     {
         ICoreAPI api;
-        ICoreClientAPI capi;
-        ICoreServerAPI sapi;
+        // ICoreClientAPI capi;
+        // ICoreServerAPI sapi;
 
         public override void Start(ICoreAPI api)
         {

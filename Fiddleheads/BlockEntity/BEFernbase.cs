@@ -23,14 +23,14 @@ namespace Fiddleheads
         public int MinCount = 2;
         public int MaxCount = 12;
 
-        public double FruitingDaysMin = 10;
-        public double FruitingDaysMax = 20;
+        public float GrowingMonthsMin = 0.5f;
+        public float GrowingMonthsMax = 1.0f;
 
-        public double GrowingDaysMin = 20;
-        public double GrowingDaysMax = 30;
+        public float FruitingMonthsMin = 1.5f;
+        public float FruitingMonthsMax = 2.5f;
 
-        public float WildGrowthTempMin = 2f;
-        public float WildGrowthTempMax = 10f;
+        public float WildGrowthStartTemp = 2f;
+        public float WildGrowthOptimalTemp = 10f;
 
         public float WildFernDropMul = 0.85f;
     }
@@ -90,6 +90,8 @@ namespace Fiddleheads
         double fiddleheadsDiedTotalDays = -999999;
         double fiddleheadsGrowingDays = 0;
         double lastUpdateTotalDays = 0;
+        double patchSpawnTotalDays = 0;
+        public double LastGrowthCheckDays = 0;
 
         AssetLocation fiddleheadBlockCode;
 
@@ -117,6 +119,11 @@ namespace Fiddleheads
                     api.Logger.Error("Invalid fiddlehead type '{0}' at {1}. Will delete block entity.", fiddleheadBlockCode, Pos);
                     Api.Event.EnqueueMainThreadTask(() => Api.World.BlockAccessor.RemoveBlockEntity(Pos), "deletefiddleheadBE");
                 }
+            }
+
+            if (LastGrowthCheckDays <= 0)
+            {
+                LastGrowthCheckDays = api.World.Calendar.TotalDays;
             }
         }
 
@@ -147,10 +154,10 @@ namespace Fiddleheads
                 {
                     float temperature = Api.World.BlockAccessor.GetClimateAt(Pos, EnumGetClimateMode.ForSuppliedDate_TemperatureOnly, lastUpdateTotalDays + 0.5).Temperature;
 
-                    if (temperature > 5)
-                    {
-                        fiddleheadsGrowingDays += Api.World.Calendar.TotalDays - lastUpdateTotalDays;
-                    }
+                    double elapsedDays = Api.World.Calendar.TotalDays - lastUpdateTotalDays;
+                    float growthFactor = BlockFiddlehead.GetWildGrowthFactor(temperature, wildProps);
+
+                    fiddleheadsGrowingDays += elapsedDays * growthFactor;
 
                     lastUpdateTotalDays++;
                 }
@@ -165,6 +172,7 @@ namespace Fiddleheads
             {
                 if (Api.World.Calendar.TotalDays - lastUpdateTotalDays > 0.1)
                 {
+                    UpdatePatchGrowth();
                     lastUpdateTotalDays = Api.World.Calendar.TotalDays;
 
                     for (int i = 0; i < grownFiddleheadOffsets.Length; i++)
@@ -216,15 +224,14 @@ namespace Fiddleheads
             if (block.Attributes?["fiddleheadProps"].Exists != true) return false;
 
             props = block.Attributes["fiddleheadProps"].AsObject<FiddleheadProps>();
-            wildProps = block.Attributes?["wildFiddleheadProps"]?.AsObject<WildFiddleheadProps>()?? new WildFiddleheadProps();
+            wildProps = block.Attributes?["wildFiddleheadProps"]?.AsObject<WildFiddleheadProps>();
             FiddleheadSystem.lcgrnd.InitPositionSeed(fiddleheadBlockCode.GetHashCode(), (int)Api.World.Calendar.GetHemisphere(Pos) + 5);
 
-            fruitingDays = wildProps.FruitingDaysMin + FiddleheadSystem.lcgrnd.NextDouble() * (wildProps.FruitingDaysMax - wildProps.FruitingDaysMin);
-            growingDays = wildProps.GrowingDaysMin + FiddleheadSystem.lcgrnd.NextDouble() * (wildProps.GrowingDaysMax - wildProps.GrowingDaysMin);
+            float daysPerMonth = Api.World.Calendar.DaysPerMonth;
+            float randomFactor = (float)FiddleheadSystem.lcgrnd.NextDouble();
 
-            // Org
-            // fruitingDays = 20 + FiddleheadSystem.lcgrnd.NextDouble() * 20;
-            // growingDays = 10 + FiddleheadSystem.lcgrnd.NextDouble() * 10;
+            growingDays = (wildProps.GrowingMonthsMin + randomFactor * (wildProps.GrowingMonthsMax - wildProps.GrowingMonthsMin)) * daysPerMonth;
+            fruitingDays = (wildProps.FruitingMonthsMin + randomFactor * (wildProps.FruitingMonthsMax - wildProps.FruitingMonthsMin)) * daysPerMonth;
 
             return true;
         }
@@ -245,6 +252,8 @@ namespace Fiddleheads
         private void growFiddleheads(IBlockAccessor blockAccessor, IRandom rnd)
         {
             generateUpGrowingFiddleheads(blockAccessor, rnd);
+
+            patchSpawnTotalDays = Api.World.Calendar.TotalDays;
 
             fiddleheadsGrownTotalDays = (fiddleheadBlock as BlockFiddlehead).Api.World.Calendar.TotalDays - rnd.NextDouble() * fruitingDays;
         }
@@ -313,6 +322,82 @@ namespace Fiddleheads
             return true;
         }
 
+        private void UpdatePatchGrowth()
+        {
+            int targetStage = GetTargetStage();
+
+            foreach (var offset in grownFiddleheadOffsets)
+            {
+                BlockPos pos = Pos.AddCopy(offset);
+
+                Block block =
+                    Api.World.BlockAccessor.GetBlock(pos);
+
+                if (!(block is BlockFiddlehead fiddlehead))
+                {
+                    continue;
+                }
+
+                if (fiddlehead.CurrentStage() >= targetStage)
+                {
+                    continue;
+                }
+
+                Block newBlock =
+                    Api.World.GetBlock(
+                        block.CodeWithParts(
+                            targetStage.ToString()
+                        )
+                    );
+
+                if (newBlock != null)
+                {
+                    Api.World.BlockAccessor.ExchangeBlock(
+                        newBlock.Id,
+                        pos
+                    );
+                }
+            }
+        }
+
+        private double CalculateGrowthDaysSinceSpawn()
+        {
+            double totalGrowthDays = 0;
+
+            double now = Api.World.Calendar.TotalDays;
+
+            for (double day = patchSpawnTotalDays; day < now; day += 1)
+            {
+                float temp =
+                    Api.World.BlockAccessor.GetClimateAt(
+                        Pos,
+                        EnumGetClimateMode.ForSuppliedDate_TemperatureOnly,
+                        day + 0.5
+                    ).Temperature;
+
+                totalGrowthDays +=
+                    BlockFiddlehead.GetWildGrowthFactor(
+                        temp,
+                        wildProps
+                    );
+            }
+
+            return totalGrowthDays;
+        }
+
+        private int GetTargetStage()
+        {
+            double growthDays =
+                CalculateGrowthDaysSinceSpawn();
+
+            double stageDuration =
+                growingDays / 8.0;
+
+            int stage =
+                1 + (int)(growthDays / stageDuration);
+
+            return GameMath.Clamp(stage, 1, 9);
+        }
 
         public override void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldAccessForResolve)
         {
@@ -325,6 +410,8 @@ namespace Fiddleheads
             fiddleheadsDiedTotalDays = tree.GetDouble("fiddleheadsDiedTotalDays");
             lastUpdateTotalDays = tree.GetDouble("lastUpdateTotalDays");
             fiddleheadsGrowingDays = tree.GetDouble("fiddleheadsGrowingDays");
+            LastGrowthCheckDays = tree.GetDouble("lastGrowthCheckDays");
+            patchSpawnTotalDays = tree.GetDouble("patchSpawnTotalDays");
 
             setFiddleheadBlock(worldAccessForResolve.GetBlock(fiddleheadBlockCode));
         }
@@ -340,6 +427,8 @@ namespace Fiddleheads
 
             tree.SetDouble("lastUpdateTotalDays", lastUpdateTotalDays);
             tree.SetDouble("fiddleheadsGrowingDays", fiddleheadsGrowingDays);
+            tree.SetDouble("lastGrowthCheckDays", LastGrowthCheckDays);
+            tree.SetDouble("patchSpawnTotalDays", patchSpawnTotalDays);
         }
 
 

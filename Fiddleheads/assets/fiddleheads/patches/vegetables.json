@@ -56,6 +56,23 @@
           "partType": "Filling",
           "mixingCodes": [ "potpie" ]
         },
+        "groundStorageTransform": {
+          "translation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "rotation": {
+            "x": -88,
+            "y": 0,
+            "z": 36
+          },
+          "origin": {
+            "x": 0.78,
+            "y": 0.05,
+            "z": 0.5
+          }
+        },
         "displayable": {
           "shelf": {
             "size": {
