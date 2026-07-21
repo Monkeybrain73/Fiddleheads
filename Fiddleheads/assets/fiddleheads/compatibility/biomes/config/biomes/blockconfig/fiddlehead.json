@@ -1,0 +1,15 @@
+{
+  "BlockPatches": {
+    "fiddleheadfern": {
+      "biorealm": [
+        "pacific nearctic",
+        "atlantic nearctic",
+        "atlantic palearctic",
+        "central palearctic",
+        "eastern palearctic",
+        "pacific palearctic"
+      ],
+      "bioriver": "both"
+    }
+  }
+}

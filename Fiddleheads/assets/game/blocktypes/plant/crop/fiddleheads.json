@@ -16,7 +16,9 @@
     "general": [ "" ],
     "plants": [ "" ]
   },
+  "drawtype": "JSON",
   "renderpass": "OpaqueNoCull",
+  "faceCullMode": "MergeSnowLayer",
   "randomDrawOffset": false,
   "randomizeRotations": true,
   "randomizeAxes": "xz",

@@ -5,7 +5,7 @@ using Vintagestory.API.Server;
 [assembly: ModInfo("fiddleheads",
                     Authors = new string[] { "xXx_Ape_xXx" },
                     Description = "Adds natural spawning fiddlehead ferns that can be propagated and used in meals",
-                    Version = "1.0.0")]
+                    Version = "1.0.1")]
 
 
 namespace Fiddleheads
